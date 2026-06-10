@@ -1,24 +1,31 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Feather } from 'lucide-react';
+
+const links = [
+  { label: 'Anasayfa', to: '/' },
+  { label: 'Babanız', to: '/babaniz' },
+  { label: 'Burda', to: '/burda' },
+  { label: 'Ayık', to: '/ayik' },
+  { label: 'Olun', to: '/olun' },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const links = ['Anasayfa', 'Babanız', 'Burda', 'Ayık', 'Olun'];
-
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        <a href="#" className="brand">
+        <Link to="/" className="brand">
           <Feather size={22} />
           <span>BlogSite</span>
-        </a>
+        </Link>
 
         <nav className={`nav-links ${open ? 'open' : ''}`}>
           {links.map((l) => (
-            <a key={l} href="#" onClick={() => setOpen(false)}>
-              {l}
-            </a>
+            <Link key={l.to} to={l.to} onClick={() => setOpen(false)}>
+              {l.label}
+            </Link>
           ))}
           <a href="#newsletter" className="btn-nav" onClick={() => setOpen(false)}>
             Abone Ol
