@@ -608,7 +608,7 @@ a { color: inherit; text-decoration: none; }
   max-height: 420px;
 }
 
-.post-detail-cover img { width: 100%; height: 420px; object-fit: cover; }
+.post-detail-cover img { width: 100%; height: auto; max-height: 600px; object-fit: contain; background: var(--bg2); }
 
 /* Markdown content */
 .post-detail-body { font-size: 1.05rem; line-height: 1.85; }
