@@ -66,12 +66,19 @@ export default function AdminPage() {
     const file = e.target.files?.[0]
     if (!file || !supabase) return
     setUploading(true)
-    const path = `${Date.now()}-${file.name}`
-    const { data, error } = await supabase.storage.from('post-images').upload(path, file)
-    if (!error) {
-      const { data: urlData } = supabase.storage.from('post-images').getPublicUrl(data.path)
-      setForm(f => ({ ...f, image_url: urlData.publicUrl }))
+    const ext = file.name.split('.').pop()
+    const path = `${Date.now()}.${ext}`
+    const { data, error } = await supabase.storage.from('post-images').upload(path, file, {
+      cacheControl: '3600',
+      upsert: false,
+    })
+    if (error) {
+      alert(`Görsel yüklenemedi: ${error.message}`)
+      setUploading(false)
+      return
     }
+    const { data: urlData } = supabase.storage.from('post-images').getPublicUrl(data.path)
+    setForm(f => ({ ...f, image_url: urlData.publicUrl }))
     setUploading(false)
   }
 
