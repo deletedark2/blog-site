@@ -4,7 +4,7 @@ import { Menu, X, Feather } from 'lucide-react';
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const links = ['Anasayfa', 'Yazılar', 'Kategoriler', 'Hakkında', 'İletişim'];
+  const links = ['Anasayfa', 'Babanız', 'Burda', 'Ayık', 'Olun'];
 
   return (
     <header className="navbar">
