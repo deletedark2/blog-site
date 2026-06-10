@@ -28,8 +28,9 @@ export default function AdminPage() {
     if (data) setPosts(data)
   }
 
-  function startEdit(post) {
-    setForm({ ...EMPTY_FORM, ...post })
+  async function startEdit(post) {
+    const { data } = await supabase.from('posts').select('*').eq('id', post.id).single()
+    setForm({ ...EMPTY_FORM, ...(data || post) })
     setEditId(post.id)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
