@@ -8,6 +8,7 @@ const links = [
   { label: 'Burda', to: '/burda' },
   { label: 'Ayık', to: '/ayik' },
   { label: 'Olun', to: '/olun' },
+  { label: 'İletişim', to: '/iletisim' },
 ];
 
 export default function Navbar() {

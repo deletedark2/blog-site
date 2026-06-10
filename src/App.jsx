@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import LoginPage from './pages/LoginPage'
 import AdminPage from './pages/AdminPage'
 import StaticPage from './pages/StaticPage'
+import ContactPage from './pages/ContactPage'
 import './App.css'
 
 function Home() {
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/burda" element={<Layout><StaticPage slug="burda" /></Layout>} />
         <Route path="/ayik" element={<Layout><StaticPage slug="ayik" /></Layout>} />
         <Route path="/olun" element={<Layout><StaticPage slug="olun" /></Layout>} />
+        <Route path="/iletisim" element={<Layout><ContactPage /></Layout>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={
           <ProtectedRoute>
